@@ -21,10 +21,16 @@ class Square
 
   def place_piece(piece)
     if @occupied
-      raise "Square is not empty"
+      raise 'Square is not empty'
     end
     @occupied = true
-    @piece = Piece
+    @piece = piece
   end
+
+  def get_piece
+    return @piece if @occupied
+    
+    return nil
+  end  
 
 end
