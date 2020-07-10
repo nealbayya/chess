@@ -2,8 +2,8 @@ require_relative 'piece'
 
 class Pawn < Piece
   def initialize(white)
-    super
-    @unicode = @white ? "\u2659" : "\u265F"
+    super(white)
+    @unicode = @white ? "\u265F" : "\u2659"
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

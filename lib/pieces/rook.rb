@@ -2,8 +2,8 @@ require_relative 'piece'
 
 class Rook < Piece
   def initialize(white)
-    super
-    @unicode = @white ? "\u2656" : "\u265C"
+    super(white)
+    @unicode = white ? "\u265C" : "\u2656"
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

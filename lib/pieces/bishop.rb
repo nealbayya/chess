@@ -2,8 +2,8 @@ require_relative 'piece'
 
 class Bishop < Piece
   def initialize(white)
-    super
-    @unicode = @white ? "\u2657" : "\u265D"
+    super(white)
+    @unicode = @white ? "\u265D" : "\u2657" 
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

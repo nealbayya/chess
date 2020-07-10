@@ -10,10 +10,10 @@ require_relative 'pieces/rook'
 class Board
   def initialize
     @board_array = []
-    (1..8).each do |row_index|
+    (0..7).each do |row_index|
       row = []
-      light = 1 - row_index % 2
-      (1..8).each do |col_index|
+      light = row_index % 2
+      (0..7).each do |col_index|
         row.push(Square.new(row_index, col_index, light))
         light = 1 - light
       end
@@ -52,12 +52,14 @@ class Board
   end
 
   def print_self
-    (7..0).each do |row|
+    (7).downto(0).each do |row|
       (0..7).each do |col|
-        print @board_array[row][col].get_piece.unicode.encode('utf-8') + ' '
+        piece = @board_array[row][col].get_piece
+        print piece.unicode unless piece.nil?
       end
       print "\n"
     end
   end
 
 end
+

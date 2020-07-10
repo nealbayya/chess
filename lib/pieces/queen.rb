@@ -2,8 +2,8 @@ require_relative 'piece'
 
 class Queen < Piece
   def initialize(white)
-    super
-    @unicode = @white ? "\u2655" : "\u265B"
+    super(white)
+    @unicode = @white ? "\u265B" : "\u2655"
   end
 
   def valid_move(from_row, from_col, to_row, to_col)
