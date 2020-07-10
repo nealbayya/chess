@@ -1,5 +1,5 @@
-include 'player.rb'
-include 'board.rb'
+require_relative 'player'
+require_relative 'board'
 class ChessEngine
   def initialize
     @board = Board.new

@@ -1,5 +1,11 @@
-require 'square.rb'
-require_all 'pieces/'
+require_relative 'square'
+require_relative 'pieces/piece'
+require_relative 'pieces/bishop'
+require_relative 'pieces/king'
+require_relative 'pieces/knight'
+require_relative 'pieces/pawn'
+require_relative 'pieces/queen'
+require_relative 'pieces/rook'
 
 class Board
   def initialize
@@ -45,7 +51,7 @@ class Board
     return @board_array[row_index][col_index]
   end
 
-  def print_board
+  def print_self
     (7..0).each do |row|
       (0..7).each do |col|
         print @board_array[row][col].get_piece.unicode.encode('utf-8') + ' '
