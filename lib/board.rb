@@ -1,6 +1,5 @@
 require 'square.rb'
 class Board
-  attr_accessor :board_array
   def initialize
     @board_array = []
     (1..8).each do |row_index|
@@ -12,6 +11,10 @@ class Board
       end
       @board_array.push(row)
     end
+  end
+
+  def get_square(row_index, col_index)
+    return @board_array[row_index][col_index]
   end
 
 end
