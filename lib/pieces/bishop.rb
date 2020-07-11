@@ -4,6 +4,7 @@ class Bishop < Piece
   def initialize(white)
     super(white)
     @unicode = @white ? "\u265D" : "\u2657" 
+    @notator = 'B'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

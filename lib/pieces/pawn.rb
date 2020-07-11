@@ -4,6 +4,7 @@ class Pawn < Piece
   def initialize(white)
     super(white)
     @unicode = @white ? "\u265F" : "\u2659"
+    @notator = 'P'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

@@ -1,8 +1,9 @@
 class Piece
-  attr_accessor :white, :unicode
+  attr_accessor :white, :unicode, :notator
   def initialize(white)
     @white = white
-    @unicode = ""
+    @unicode = ''
+    @notator = ''
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

@@ -4,6 +4,7 @@ class Rook < Piece
   def initialize(white)
     super(white)
     @unicode = white ? "\u265C" : "\u2656"
+    @notator = 'R'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

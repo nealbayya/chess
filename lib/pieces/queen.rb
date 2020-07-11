@@ -4,6 +4,7 @@ class Queen < Piece
   def initialize(white)
     super(white)
     @unicode = @white ? "\u265B" : "\u2655"
+    @notator = 'Q'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

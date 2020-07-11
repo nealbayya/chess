@@ -4,6 +4,7 @@ class King < Piece
   def initialize(white)
     super(white)
     @unicode = @white ? "\u265A": "\u2654"
+    @notator = 'K'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)

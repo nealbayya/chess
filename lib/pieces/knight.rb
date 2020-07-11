@@ -4,6 +4,7 @@ class Knight < Piece
   def initialize(white)
     super(white)
     @unicode = @white ? "\u265E" : "\u2658"
+    @notator = 'N'
   end
 
   def valid_move(from_row, from_col, to_row, to_col)
