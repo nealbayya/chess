@@ -53,12 +53,16 @@ class Board
 
   def print_self
     (7).downto(0).each do |row|
+      print "   --- --- --- --- --- --- --- --- \n#{row + 1} | "
       (0..7).each do |col|
         piece = @board_array[row][col].get_piece
-        print piece.unicode unless piece.nil?
+        print piece.nil? ? ' ' : piece.unicode
+        print ' | '
       end
       print "\n"
     end
+    print "   --- --- --- --- --- --- --- --- \n"
+    print "    a | b | c | d | e | f | g | h \n"
   end
 
 end
