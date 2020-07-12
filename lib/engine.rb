@@ -53,7 +53,17 @@ class ChessEngine
   end
 
   def knight_check(king_square, white)
-    
+    rel_knight_steps = [[-2, -1], [-2, 1], [2, -1], [2, 1]]
+    rel_knight_steps.each do |knight_step|
+      atk_row = king_square.row_index + knight_step[0]
+      atk_col = king_square.col_index + knight_step[1]
+      atk_square = @board.get_square(atk_row, atk_col)
+      if atk_square.occupied
+        piece = atk_square.get_piece
+        return @board.get_square(atk_row, atk_col) if atk_piece.white != white && piece.notator == 'N'
+      end
+    end
+    return nil
   end
 
   def file_rank_check(king_square, white)
