@@ -7,7 +7,7 @@ module ChessJudge
       (0..7).each do |col_index|
         current_square = board.get_square(row_index, col_index)
         piece = current_square.get_piece
-        continue if piece.nil?
+        next if piece.nil?
         white_king_match = white && piece.white && piece.notator == 'K'
         black_king_match = !white && !piece.white && piece.notator == 'K'
         king_square = current_square if white_king_match || black_king_match
@@ -31,14 +31,14 @@ module ChessJudge
         n_steps += 1
       end
 
-      continue unless row_iter.between?(0, 7) && col_iter.between?(0, 7)
+      next unless row_iter.between?(0, 7) && col_iter.between?(0, 7)
 
       diag_piece = board.get_square(row_iter, col_iter).get_piece
       same_color = diag_piece.white == white
       non_diag_attackor = ['R', 'N', 'K'].include?(diag_piece.notator)
       distant_pawn = diag_piece.notator == 'P' && n_steps > 1
       pawn_dir_mismatch = diag_piece.notator == 'P' && ((white && diag_idx >= 2) || (!white && diag_idx < 2))
-      continue if same_color || non_diag_attackor || distant_pawn || pawn_dir_mismatch
+      next if same_color || non_diag_attackor || distant_pawn || pawn_dir_mismatch
 
       return board.get_square(row_iter, col_iter)
     end
@@ -50,12 +50,12 @@ module ChessJudge
     rel_knight_steps.each do |knight_step|
       atk_row = king_square.row_index + knight_step[0]
       atk_col = king_square.col_index + knight_step[1]
-      continue unless row_iter.between?(0, 7) && col_iter.between?(0, 7)
+      next unless atk_row.between?(0, 7) && atk_col.between?(0, 7)
  
       atk_square = board.get_square(atk_row, atk_col)
       if atk_square.occupied
         piece = atk_square.get_piece
-        return board.get_square(atk_row, atk_col) if atk_piece.white != white && piece.notator == 'N'
+        return board.get_square(atk_row, atk_col) if piece.white != white && piece.notator == 'N'
       end
     end
     return nil
@@ -71,15 +71,15 @@ module ChessJudge
         atk_col += rook_step[1]
       end
 
-      continue unless atk_row.between?(0, 7) && atk_col.between?(0, 7)
+      next unless atk_row.between?(0, 7) && atk_col.between?(0, 7)
       atk_piece = board.get_square(atk_row, atk_col).get_piece
-      same_color = diag_piece.white == white
+      same_color = atk_piece.white == white
       non_rook_attackor = ['R', 'N', 'B', 'P', 'K'].include?(atk_piece.notator)
-      continue if same_color || non_rook_attackor
+      next if same_color || non_rook_attackor
 
       return board.get_square(atk_row, atk_col)
     end
-    retun nil
+    return nil
   end
 
   def check(board, white)

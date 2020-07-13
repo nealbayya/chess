@@ -14,7 +14,7 @@ class Player
   end
 
   def parse_raw_move(raw_move)
-    move_capture = raw_move.includes?('x')
+    move_capture = raw_move.include?('x')
     delimeter = move_capture ? 'x' : '-'
     split = raw_move.split(delimeter)
     from = split[0]
@@ -34,10 +34,10 @@ class Player
   end
 
   def get_board_elements(board, piece, capture, from_row, from_col, to_row, to_col)
-    from_square = board[from_row][from_col]
-    to_square = board[to_row][to_col]
+    from_square = board.get_square(from_row, from_col)
+    to_square = board.get_square(to_row, to_col)
     piece_inst = from_square.get_piece
-    square_input_mismatch = piece_inst.notator != piece 
+    square_input_mismatch = piece_inst.notator != piece
     move_2_occupied_error = to_square.occupied && !capture
     return nil if square_input_mismatch || move_2_occupied_error
 

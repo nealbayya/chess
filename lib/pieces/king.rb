@@ -8,7 +8,7 @@ class King < Piece
   end
 
   def valid_move(from_row, from_col, to_row, to_col)
-    return false unless super.valid_move(from_row, from_col, to_row, to_col)
+    return false unless super
 
     row_diff = to_row - from_row
     col_diff = to_col - from_col

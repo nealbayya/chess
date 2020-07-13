@@ -15,7 +15,7 @@ class ChessEngine
     player = white ? @white_player : @black_player
     first_request = true
     in_check = true
-    while check
+    while in_check
       msg = first_request ? '' : 'INVALID MOVE [CHECK]'
       move_arr = player.request_input(@board, msg)
       first_request = false
@@ -26,7 +26,7 @@ class ChessEngine
       captured_piece = capture ? to_square.detatch_piece : nil
       to_square.place_piece(piece)
       in_check = check(@board, white)
-      if in_check  
+      if in_check 
         from_square.place_piece(piece)
         if captured
           to_square.place_piece(captured_piece)
@@ -47,5 +47,5 @@ class ChessEngine
       move_num += 1
     end
   end
-  
+
 end

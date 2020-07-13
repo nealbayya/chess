@@ -9,7 +9,7 @@ class Pawn < Piece
 
   def valid_move(from_row, from_col, to_row, to_col)
     #cannot move off board or move across columns (unless capture)
-    return false unless super.valid_move(from_row, from_col, to_row, to_col)
+    return false unless super
     return false unless from_col == to_col
     
     #2 square push from beginning pawn row
