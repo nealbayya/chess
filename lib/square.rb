@@ -9,7 +9,7 @@ require_relative 'pieces/rook'
 class Square
   attr_reader :row_index, :col_index, :occupied, :piece, :light
   def initialize(row_index, col_index, light)
-    @row_index = row_index 
+    @row_index = row_index
     @col_index = col_index
     @occupied = false
     @piece = nil

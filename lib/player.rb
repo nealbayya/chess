@@ -43,12 +43,13 @@ class Player
 
     valid_pawn_capture = capture && piece == 'P' && piece_inst.valid_capture(from_row, from_col, to_row, to_col)
     valid_move = piece_inst.valid_move(from_row, from_col, to_row, to_col)
-    return [piece_inst, capture, from_square, to_square] if valid_pawn_capture || valid_move
+    return [capture, from_square, to_square] if valid_pawn_capture || valid_move
 
     return nil
   end
 
-  def request_input(board)
+  def request_input(board, msg='')
+    puts msg
     puts @white ? 'WHITE TO MOVE' : 'BLACK TO MOVE'
     board.print_self
     valid_input = false
