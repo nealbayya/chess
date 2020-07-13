@@ -1,0 +1,11 @@
+Gameplay
+  Castling
+  Detect Checkmate
+  En-passant
+  Pawn Promotion
+Added Functionality
+  Serialize games -> yaml files
+Visual Effects
+  Adaptability to white terminal backgrounds as well
+  Print board from black perspective
+
