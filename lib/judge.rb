@@ -8,9 +8,9 @@ module ChessJudge
         current_square = board.get_square(row_index, col_index)
         piece = current_square.piece
         next if piece.nil?
-        white_king_match = white && piece.white && piece.notator == 'K'
-        black_king_match = !white && !piece.white && piece.notator == 'K'
-        king_square = current_square if white_king_match || black_king_match
+
+        king_match = (white == piece.white) && piece.notator == 'K'
+        king_square = current_square if king_match
         break unless king_square.nil?
       end
       break unless king_square.nil?
@@ -20,27 +20,24 @@ module ChessJudge
 
   def find_diag_check(board, king_square, white)
     diag_iters = [[-1, -1], [-1, 1], [1, -1], [1, 1]]
-    diag_iters.each_with_index do |step_arr, diag_idx|
+    diag_iters.each do |step_arr|
       row_iter = king_square.row_index + step_arr[0]
       col_iter = king_square.col_index + step_arr[1]
-      n_steps = 1
 
       while row_iter.between?(0, 7) && col_iter.between?(0, 7) && !board.get_square(row_iter, col_iter).occupied
         row_iter += step_arr[0]
         col_iter += step_arr[1]
-        n_steps += 1
       end
 
       next unless row_iter.between?(0, 7) && col_iter.between?(0, 7)
 
       diag_piece = board.get_square(row_iter, col_iter).piece
-      same_color = diag_piece.white == white
-      non_diag_attackor = ['R', 'N', 'K'].include?(diag_piece.notator)
-      distant_pawn = diag_piece.notator == 'P' && n_steps > 1
-      pawn_dir_mismatch = diag_piece.notator == 'P' && ((white && diag_idx >= 2) || (!white && diag_idx < 2))
-      next if same_color || non_diag_attackor || distant_pawn || pawn_dir_mismatch
+      next unless diag_piece.white != white
 
-      return board.get_square(row_iter, col_iter)
+      pawn_check =  diag_piece.notator == 'P' &&
+                    diag_piece.valid_capture(row_iter, col_iter, king_square.row_index, king_square.col_index)
+      bqk_check = diag_piece.valid_move(row_iter, col_iter, king_square.row_index, king_square.col_index)
+      return board.get_square(row_iter, col_iter) if pawn_check || bqk_check
     end
     return nil
   end
@@ -70,14 +67,12 @@ module ChessJudge
         atk_row += rook_step[0]
         atk_col += rook_step[1]
       end
-
       next unless atk_row.between?(0, 7) && atk_col.between?(0, 7)
-      atk_piece = board.get_square(atk_row, atk_col).piece
-      same_color = atk_piece.white == white
-      non_rook_attackor = ['R', 'N', 'B', 'P', 'K'].include?(atk_piece.notator)
-      next if same_color || non_rook_attackor
 
-      return board.get_square(atk_row, atk_col)
+      atk_piece = board.get_square(atk_row, atk_col).piece
+      piece_attacks = atk_piece.white != white && atk_piece.valid_move(atk_row, atk_col, king_square.row_index, king_square.col_index)
+
+      return board.get_square(atk_row, atk_col) if piece_attacks
     end
     return nil
   end
