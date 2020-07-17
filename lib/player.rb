@@ -36,7 +36,7 @@ class Player
   def get_board_elements(board, piece, capture, from_row, from_col, to_row, to_col)
     from_square = board.get_square(from_row, from_col)
     to_square = board.get_square(to_row, to_col)
-    piece_inst = from_square.get_piece
+    piece_inst = from_square.piece
     square_input_mismatch = piece_inst.notator != piece
     move_2_occupied_error = to_square.occupied && !capture
     return nil if square_input_mismatch || move_2_occupied_error

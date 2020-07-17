@@ -6,7 +6,7 @@ module ChessJudge
     (0..7).each do |row_index|
       (0..7).each do |col_index|
         current_square = board.get_square(row_index, col_index)
-        piece = current_square.get_piece
+        piece = current_square.piece
         next if piece.nil?
         white_king_match = white && piece.white && piece.notator == 'K'
         black_king_match = !white && !piece.white && piece.notator == 'K'
@@ -33,7 +33,7 @@ module ChessJudge
 
       next unless row_iter.between?(0, 7) && col_iter.between?(0, 7)
 
-      diag_piece = board.get_square(row_iter, col_iter).get_piece
+      diag_piece = board.get_square(row_iter, col_iter).piece
       same_color = diag_piece.white == white
       non_diag_attackor = ['R', 'N', 'K'].include?(diag_piece.notator)
       distant_pawn = diag_piece.notator == 'P' && n_steps > 1
@@ -54,7 +54,7 @@ module ChessJudge
  
       atk_square = board.get_square(atk_row, atk_col)
       if atk_square.occupied
-        piece = atk_square.get_piece
+        piece = atk_square.piece
         return board.get_square(atk_row, atk_col) if piece.white != white && piece.notator == 'N'
       end
     end
@@ -72,7 +72,7 @@ module ChessJudge
       end
 
       next unless atk_row.between?(0, 7) && atk_col.between?(0, 7)
-      atk_piece = board.get_square(atk_row, atk_col).get_piece
+      atk_piece = board.get_square(atk_row, atk_col).piece
       same_color = atk_piece.white == white
       non_rook_attackor = ['R', 'N', 'B', 'P', 'K'].include?(atk_piece.notator)
       next if same_color || non_rook_attackor

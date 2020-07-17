@@ -20,24 +20,17 @@ class Square
     if @occupied
       @occupied = false
       @detatched_piece = @piece
-      @piece = nil 
+      @piece = nil
       return @detatched_piece
     end
     return nil
   end
 
   def place_piece(piece)
-    if @occupied
-      raise 'Square is not empty'
-    end
+    raise 'Square is not empty' if @occupied
+
     @occupied = true
     @piece = piece
   end
-
-  def get_piece
-    return @piece if @occupied
-    
-    return nil
-  end  
-
+  
 end

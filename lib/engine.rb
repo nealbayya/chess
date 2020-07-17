@@ -28,7 +28,7 @@ class ChessEngine
       in_check = check(@board, white)
       if in_check 
         from_square.place_piece(piece)
-        if captured
+        if capture
           to_square.place_piece(captured_piece)
         end
       end
