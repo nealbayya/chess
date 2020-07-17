@@ -3,7 +3,7 @@ require_relative 'piece'
 class Rook < Piece
   def initialize(white)
     super(white)
-    @unicode = white ? "\u265C" : "\u2656"
+    @unicode = white ? "\u2656": "\u265C"
     @notator = 'R'
   end
 

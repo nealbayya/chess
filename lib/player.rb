@@ -51,7 +51,7 @@ class Player
   def request_input(board, msg='')
     puts msg
     puts @white ? 'WHITE TO MOVE' : 'BLACK TO MOVE'
-    board.print_self
+    board.print_self(@white)
     valid_input = false
     board_elements = nil
     until valid_input

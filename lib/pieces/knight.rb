@@ -3,7 +3,7 @@ require_relative 'piece'
 class Knight < Piece
   def initialize(white)
     super(white)
-    @unicode = @white ? "\u265E" : "\u2658"
+    @unicode = @white ? "\u2658": "\u265E"
     @notator = 'N'
   end
 

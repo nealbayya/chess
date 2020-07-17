@@ -3,7 +3,7 @@ require_relative 'piece'
 class Queen < Piece
   def initialize(white)
     super(white)
-    @unicode = @white ? "\u265B" : "\u2655"
+    @unicode = @white ? "\u2655": "\u265B"
     @notator = 'Q'
   end
 

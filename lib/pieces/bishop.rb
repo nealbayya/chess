@@ -3,7 +3,7 @@ require_relative 'piece'
 class Bishop < Piece
   def initialize(white)
     super(white)
-    @unicode = @white ? "\u265D" : "\u2657" 
+    @unicode = @white ? "\u2657": "\u265D"
     @notator = 'B'
   end
 

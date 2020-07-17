@@ -3,7 +3,7 @@ require_relative 'piece'
 class Pawn < Piece
   def initialize(white)
     super(white)
-    @unicode = @white ? "\u265F" : "\u2659"
+    @unicode = @white ? "\u2659": "\u265F"
     @notator = 'P'
   end
 
