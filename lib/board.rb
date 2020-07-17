@@ -8,7 +8,7 @@ require_relative 'pieces/queen'
 require_relative 'pieces/rook'
 
 class Board
-  def initialize
+  def initialize(bool_setup_pieces=true)
     @board_array = []
     (0..7).each do |row_index|
       row = []
@@ -19,7 +19,7 @@ class Board
       end
       @board_array.push(row)
     end
-    setup_pieces
+    setup_pieces if bool_setup_pieces
   end
 
   def setup_pieces
@@ -51,11 +51,19 @@ class Board
     return @board_array[row_index][col_index]
   end
 
-  def print_self
+  def print_self(white_persp=true)
+    if white_persp
+      print_white_persp
+    else
+      print_black_persp
+    end
+  end
+
+  def print_white_persp
     (7).downto(0).each do |row|
       print "   --- --- --- --- --- --- --- --- \n#{row + 1} | "
       (0..7).each do |col|
-        piece = @board_array[row][col].get_piece
+        piece = @board_array[row][col].piece
         print piece.nil? ? ' ' : piece.unicode
         print ' | '
       end
@@ -63,6 +71,20 @@ class Board
     end
     print "   --- --- --- --- --- --- --- --- \n"
     print "    a | b | c | d | e | f | g | h \n"
+  end
+
+  def print_black_persp
+    (0..7).each do |row|
+      print "   --- --- --- --- --- --- --- --- \n#{row + 1} | "
+      (7).downto(0).each do |col|
+        piece = @board_array[row][col].piece
+        print piece.nil? ? ' ' : piece.unicode
+        print ' | '
+      end
+      print "\n"
+    end
+    print "   --- --- --- --- --- --- --- --- \n"
+    print "    h | g | f | e | d | c | b | a \n"
   end
 
 end
