@@ -1,7 +1,3 @@
 Gameplay
-  Detect Checkmate
   En-passant
   Pawn Promotion
-Added Functionality
-  Serialize games -> yaml files
-
