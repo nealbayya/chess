@@ -81,6 +81,8 @@ class Player
           return [false, board.get_square(row, king_start_col), board.get_square(row, king_end_col)],
                  [false, board.get_square(row, rook_start_col), board.get_square(row, rook_end_col)]
         end
+      elsif ['save', 'quit', 'save quit'].include?(raw_move.downcase)
+        return raw_move.downcase
       end
 
       parsed_elements = parse_raw_move(raw_move)

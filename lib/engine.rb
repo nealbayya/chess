@@ -1,13 +1,16 @@
 require_relative 'player'
 require_relative 'board'
 require_relative 'judge'
+require 'yaml'
+
 class ChessEngine
   include ChessJudge
   def initialize
     @board = Board.new
     @white_player = Player.new(true)
     @black_player = Player.new(false)
-    @move_history = []
+    @white_check_mtd = false
+    @black_check_mtd = false
   end
 
   def handle_move_request(moved_pieces, white, move_arr)
@@ -27,6 +30,18 @@ class ChessEngine
     return true
   end
 
+  def self.load(yaml_string)
+    YAML::load(yaml_string)
+  end
+
+  def save
+    puts 'Save game as: '
+    fname = gets.chomp
+    File.open "./saved/#{fname}.yml", "w" do |f|
+      f.write YAML.dump(self)
+    end
+  end
+
   def play_move(white)
     player = white ? @white_player : @black_player
     first_request = true
@@ -34,6 +49,20 @@ class ChessEngine
     while in_check
       msg = first_request ? '' : 'INVALID MOVE [CHECK]'
       move_exchanges = player.request_input(@board, msg)
+
+      if move_exchanges.include?("save")
+        save
+      end
+
+      if move_exchanges.include?("quit")
+        if white
+          @white_check_mtd = true
+        else
+          @black_check_mtd = true
+        end
+        break
+      end
+
       first_request = false
 
       moved_pieces = []
@@ -48,15 +77,16 @@ class ChessEngine
   end
 
   def play
-    move_num = 1
-    white_check_mtd = false
-    black_check_mtd = false
-
-    until white_check_mtd || black_check_mtd
+    puts "TERMINAL CHESS"
+    puts "Commands: 'quit', 'save'"
+    until @white_check_mtd || @black_check_mtd
       play_move(true)
+      if @white_check_mtd
+        break
+      end
       play_move(false)
-      move_num += 1
     end
+    puts "Game over."
   end
 
 end

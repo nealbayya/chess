@@ -1,0 +1,495 @@
+--- !ruby/object:ChessEngine
+board: !ruby/object:Board
+  board_array:
+  - - !ruby/object:Square
+      row_index: 0
+      col_index: 0
+      occupied: true
+      piece: !ruby/object:Rook
+        white: true
+        unicode: "♖"
+        notator: R
+      light: 0
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 1
+      occupied: true
+      piece: !ruby/object:Knight
+        white: true
+        unicode: "♘"
+        notator: N
+      light: 1
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 2
+      occupied: true
+      piece: !ruby/object:Bishop
+        white: true
+        unicode: "♗"
+        notator: B
+      light: 0
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 3
+      occupied: true
+      piece: !ruby/object:Queen
+        white: true
+        unicode: "♕"
+        notator: Q
+      light: 1
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 4
+      occupied: true
+      piece: !ruby/object:King
+        white: true
+        unicode: "♔"
+        notator: K
+      light: 0
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 5
+      occupied: true
+      piece: !ruby/object:Bishop
+        white: true
+        unicode: "♗"
+        notator: B
+      light: 1
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 6
+      occupied: true
+      piece: !ruby/object:Knight
+        white: true
+        unicode: "♘"
+        notator: N
+      light: 0
+    - !ruby/object:Square
+      row_index: 0
+      col_index: 7
+      occupied: true
+      piece: !ruby/object:Rook
+        white: true
+        unicode: "♖"
+        notator: R
+      light: 1
+  - - !ruby/object:Square
+      row_index: 1
+      col_index: 0
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 1
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 0
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 2
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 3
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 0
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 4
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 5
+      occupied: false
+      piece: 
+      light: 0
+      detatched_piece: &1 !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 6
+      occupied: false
+      piece: 
+      light: 1
+      detatched_piece: &2 !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+    - !ruby/object:Square
+      row_index: 1
+      col_index: 7
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: true
+        unicode: "♙"
+        notator: P
+      light: 0
+  - - !ruby/object:Square
+      row_index: 2
+      col_index: 0
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 1
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 2
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 3
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 4
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 5
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 6
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 2
+      col_index: 7
+      occupied: false
+      piece: 
+      light: 1
+  - - !ruby/object:Square
+      row_index: 3
+      col_index: 0
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 1
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 2
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 3
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 4
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 5
+      occupied: true
+      piece: *1
+      light: 0
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 6
+      occupied: true
+      piece: *2
+      light: 1
+    - !ruby/object:Square
+      row_index: 3
+      col_index: 7
+      occupied: true
+      piece: &4 !ruby/object:Queen
+        white: false
+        unicode: "♛"
+        notator: Q
+      light: 0
+  - - !ruby/object:Square
+      row_index: 4
+      col_index: 0
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 1
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 2
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 3
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 4
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 5
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 6
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 4
+      col_index: 7
+      occupied: false
+      piece: 
+      light: 1
+  - - !ruby/object:Square
+      row_index: 5
+      col_index: 0
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 1
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 2
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 3
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 4
+      occupied: true
+      piece: &3 !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 5
+      occupied: false
+      piece: 
+      light: 0
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 6
+      occupied: false
+      piece: 
+      light: 1
+    - !ruby/object:Square
+      row_index: 5
+      col_index: 7
+      occupied: false
+      piece: 
+      light: 0
+  - - !ruby/object:Square
+      row_index: 6
+      col_index: 0
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 0
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 1
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 2
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 0
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 3
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 4
+      occupied: false
+      piece: 
+      light: 0
+      detatched_piece: *3
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 5
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 1
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 6
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 0
+    - !ruby/object:Square
+      row_index: 6
+      col_index: 7
+      occupied: true
+      piece: !ruby/object:Pawn
+        white: false
+        unicode: "♟"
+        notator: P
+      light: 1
+  - - !ruby/object:Square
+      row_index: 7
+      col_index: 0
+      occupied: true
+      piece: !ruby/object:Rook
+        white: false
+        unicode: "♜"
+        notator: R
+      light: 1
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 1
+      occupied: true
+      piece: !ruby/object:Knight
+        white: false
+        unicode: "♞"
+        notator: N
+      light: 0
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 2
+      occupied: true
+      piece: !ruby/object:Bishop
+        white: false
+        unicode: "♝"
+        notator: B
+      light: 1
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 3
+      occupied: false
+      piece: 
+      light: 0
+      detatched_piece: *4
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 4
+      occupied: true
+      piece: !ruby/object:King
+        white: false
+        unicode: "♚"
+        notator: K
+      light: 1
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 5
+      occupied: true
+      piece: !ruby/object:Bishop
+        white: false
+        unicode: "♝"
+        notator: B
+      light: 0
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 6
+      occupied: true
+      piece: !ruby/object:Knight
+        white: false
+        unicode: "♞"
+        notator: N
+      light: 1
+    - !ruby/object:Square
+      row_index: 7
+      col_index: 7
+      occupied: true
+      piece: !ruby/object:Rook
+        white: false
+        unicode: "♜"
+        notator: R
+      light: 0
+white_player: !ruby/object:Player
+  white: true
+  king_moved: false
+black_player: !ruby/object:Player
+  white: false
+  king_moved: false
+white_check_mtd: false
+black_check_mtd: false
