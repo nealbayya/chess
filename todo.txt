@@ -1,5 +1,4 @@
 Gameplay
-  Castling
   Detect Checkmate
   En-passant
   Pawn Promotion
